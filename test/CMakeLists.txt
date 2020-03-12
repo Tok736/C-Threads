@@ -10,7 +10,7 @@ file(GLOB_RECURSE TEST_CPPS "*/*.cpp")
 add_executable(runTest ${TEST_CPPS} test.cpp)
 
 # TODO add lib to further test
-#target_link_libraries(runTest gtest gtest_main lib)
+target_link_libraries(runTest gtest gtest_main)
 
 add_test(
         NAME runTest
