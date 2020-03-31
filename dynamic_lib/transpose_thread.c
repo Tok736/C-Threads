@@ -1,10 +1,15 @@
-#include "dynamic/d_transpose.h"
-#include "defines.h"
+#include "transpose_thread.h"
 
 #include <pthread.h>
 #include <stdlib.h>
 #include <sys/sysinfo.h>
 #include <stdio.h>
+
+#define ERROR_NULL_POINTER        -14
+#define ERROR_ALLOCATION_MEMORY   -13
+#define ERROR_CREATE_THREAD       -11
+#define ERROR_JOIN_THREAD         -12
+#define SUCCESS                    0
 
 typedef struct {
     double** current;

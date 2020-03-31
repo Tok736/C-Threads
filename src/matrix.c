@@ -21,6 +21,7 @@ void printMatrix(double ** matrix, int rows, int cols) {
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 void freeMatrix(double *** matrix, int rows) {

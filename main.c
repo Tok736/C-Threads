@@ -5,14 +5,15 @@
 //  алгоритм с использованием нескольких потоков решения этой
 //  задачи с учетом оптимизации работы с кэш-памятью.
 
-#include "static/s_transpose.h"
-#include "dynamic/d_transpose.h"
-#include "defines.h"
 #include "matrix.h"
+#include "transpose.h"
+#include "transpose_thread.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
+#define SUCCESS 0
 
 int userTest() {
     int rows, cols;
@@ -23,9 +24,14 @@ int userTest() {
 
     generate(&matrix, rows, cols, -10, 30);
     printMatrix(matrix, rows, cols);
-    int status = transpose_thread(&matrix, &rows, &cols);
+    int status = transpose(&matrix, &rows, &cols);
     if (status != SUCCESS) return status;
-    printf("\n");
+
+    printMatrix(matrix, rows, cols);
+
+    status = transpose_thread(&matrix, &rows, &cols);
+    if (status != SUCCESS) return status;
+
     printMatrix(matrix, rows, cols);
     freeMatrix(&matrix, rows);
     return SUCCESS;

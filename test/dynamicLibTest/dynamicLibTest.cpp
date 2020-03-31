@@ -1,15 +1,17 @@
 #include "gtest/gtest.h"
-#include "matrix.h"
-#include "dynamic/d_transpose.h"
-#include "static/s_transpose.h"
-#include "defines.h"
 
-TEST(testStartTest, simple) {
+extern "C" {
+#include "matrix.h"
+#include "transpose_thread.h"
+}
+
+#define SUCCESS 0
+
+TEST(timeTest, testThread) {
     int rows = 10000, cols = 5000;
     double ** matrix;
 
     generate(&matrix, rows, cols, -10, 30);
-    printMatrix(matrix, rows, cols);
     int status = transpose_thread(&matrix, &rows, &cols);
     EXPECT_EQ(status, SUCCESS);
 }

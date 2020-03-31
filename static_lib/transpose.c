@@ -1,5 +1,10 @@
-#include "static/s_transpose.h"
-#include "defines.h"
+#include "transpose.h"
+
+#define ERROR_NULL_POINTER        -14
+#define ERROR_ALLOCATION_MEMORY   -13
+#define ERROR_CREATE_THREAD       -11
+#define ERROR_JOIN_THREAD         -12
+#define SUCCESS                    0
 
 #include <stdlib.h>
 
